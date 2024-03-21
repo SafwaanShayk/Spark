@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useRef } from "react";
+import "./App.css";
+import Home from "./components/pages/Home";
+import Navbar from "./components/layout/Navbar";
 function App() {
+  const homeRef = useRef(null);
+  const featuresRef = useRef(null);
+  const GuideRef = useRef(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar featuresRef={featuresRef} GuideRef={GuideRef} homeRef={homeRef} />
+      <Home featuresRef={featuresRef} GuideRef={GuideRef} homeRef={homeRef} />
     </div>
   );
 }
