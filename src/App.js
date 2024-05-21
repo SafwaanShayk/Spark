@@ -1,15 +1,16 @@
-import { useRef } from "react";
+import { React, useRef } from "react";
 import "./App.css";
-import Home from "./components/pages/Home";
 import Navbar from "./components/layout/Navbar";
+import { Outlet } from "react-router-dom";
 function App() {
-  const homeRef = useRef(null);
-  const featuresRef = useRef(null);
-  const GuideRef = useRef(null);
+  // const homeRef = useRef(null);
+  // const featuresRef = useRef(null);
+  // const GuideRef = useRef(null);
+
   return (
     <div className="App">
-      <Navbar featuresRef={featuresRef} GuideRef={GuideRef} homeRef={homeRef} />
-      <Home featuresRef={featuresRef} GuideRef={GuideRef} homeRef={homeRef} />
+      <Navbar />
+      <Outlet />
     </div>
   );
 }

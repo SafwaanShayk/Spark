@@ -1,0 +1,22 @@
+src/
+│
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   └── fonts/
+│
+├── components/
+│   ├── common/            // Reusable components (e.g., Button, Input)
+│   ├── layout/            // Layout components (e.g., Header, Footer)
+│   └── pages/             // Page components (e.g., Home, About)
+│
+├── hooks/                 // Custom hooks
+│
+├── services/              // API services (e.g., Axios configuration)
+│
+├── styles/                // Global styles, themes, or CSS variables
+│
+├── utils/                 // Utility functions or helper modules
+│
+├── App.js
+└── index.js

@@ -1,13 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
+import { useEffect } from "react";
 import "./home.css";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-function Home({ featuresRef, homeRef, GuideRef }) {
+function Home() {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      } else if (element === "home") {
+        element.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [location.hash]);
+
   return (
     <>
-      <div className="home-image" ref={homeRef}>
+      <div id="home">
         <h1>
-          <span>Welcome</span> to Graduate Navigator
+          <span>Welcome</span> to S.P.A.R.K <br /> Smart Project Assistance &
+          Research Kit
         </h1>
         <p>
           Join and embark on a journey of limitless possibilities in project
@@ -29,9 +49,9 @@ function Home({ featuresRef, homeRef, GuideRef }) {
               </h1>
               <p>
                 Whether you're a student, educator, or industry professional,
-                [Project Name] is where you belong. Join us today and be a part
-                of a community that shapes the future of project development.
-                Start building your legacy with us!
+                S.P.A.R.K is where you belong. Join us today and be a part of a
+                community that shapes the future of project development. Start
+                building your legacy with us!
               </p>
             </div>
             <div className="col">
@@ -81,11 +101,11 @@ function Home({ featuresRef, homeRef, GuideRef }) {
               Success
             </h1>
             <p>
-              Fuel your aspirations with Graduate Navigator. Dive into a realm
-              of innovation where your ideas transcend into reality. From
-              concept inception through insightful comparative analysis, to a
-              dynamic marketplace—empower yourself to shape the future of
-              project development. Join us and redefine success on your terms.
+              Fuel your aspirations with S.P.A.R.K. Dive into a realm of
+              innovation where your ideas transcend into reality. From concept
+              inception through insightful comparative analysis, to a dynamic
+              marketplace—empower yourself to shape the future of project
+              development. Join us and redefine success on your terms.
             </p>
           </div>
         </div>
@@ -96,13 +116,13 @@ function Home({ featuresRef, homeRef, GuideRef }) {
           <div className="col-8">
             <h1>Elevating Your Project Journey</h1>
             <p>
-              <span> Empowering Futures </span>Graduate Navigator is more than
-              just a web application – it's a catalyst for your success. We
-              believe in empowering individuals to reach their full potential.
+              <span> Empowering Futures </span>S.P.A.R.K is more than just a web
+              application – it's a catalyst for your success. We believe in
+              empowering individuals to reach their full potential.
               <br />
               <span>Fueling Innovation</span> Innovation is at the core of
-              Graduate Navigator. We're committed to fueling your creativity and
-              guiding you towards groundbreaking project ideas.
+              S.P.A.R.K. We're committed to fueling your creativity and guiding
+              you towards groundbreaking project ideas.
             </p>
           </div>
           <div className="col">
@@ -117,7 +137,7 @@ function Home({ featuresRef, homeRef, GuideRef }) {
             <img src={require("../../images/app1.svg").default} alt="" />
           </div>
           <div className="col-8">
-            <h1>Why Graduate Navigator Stands Out</h1>
+            <h1>Why S.P.A.R.K Stands Out</h1>
             <p>
               <span>Comparative Analysis Framework</span> Empower your
               decision-making process with our Comparative Analysis Framework.
@@ -128,14 +148,14 @@ function Home({ featuresRef, homeRef, GuideRef }) {
               <span>Trend-Driven Insights</span> Stay ahead of the curve with
               our Trending Filter. We keep you updated on the latest industry
               trends, ensuring your projects are not just relevant but
-              groundbreaking. Graduate Navigator is not just a platform; it's
-              your strategic ally in the dynamic world of project development.
+              groundbreaking. S.P.A.R.K is not just a platform; it's your
+              strategic ally in the dynamic world of project development.
             </p>
           </div>
         </div>
       </div>
 
-      <div className="steps" ref={GuideRef}>
+      <div id="steps">
         <div className="row justify-content-md-center">
           <div className="col-md-auto">
             <h1>New in this Industry?</h1>
@@ -143,7 +163,7 @@ function Home({ featuresRef, homeRef, GuideRef }) {
         </div>
         <div className="row justify-content-md-center">
           <div className="col-md-auto">
-            <p>Here’s how it works on Graduate Navigator.</p>
+            <p>Here’s how it works on S.P.A.R.K.</p>
           </div>
         </div>
         <div className="row">
@@ -205,10 +225,10 @@ function Home({ featuresRef, homeRef, GuideRef }) {
         </p>
       </div>
 
-      <div className="features" ref={featuresRef}>
+      <div id="features">
         <div className="container text-center">
           <h1>Features</h1>
-          <p>Few good reasons why you should use Graduate Navigator</p>
+          <p>Few good reasons why you should use S.P.A.R.K</p>
           <div className="row align-items-start">
             <div className="col">
               <img src={require("../../images/magicWand.svg").default} alt="" />
@@ -233,9 +253,9 @@ function Home({ featuresRef, homeRef, GuideRef }) {
                 uniqueness among other projects, and compare past projects with
                 yours.
               </p>
-              <a href="">
+              {/* <Link to="/comparison">
                 Get Started <i className="bi bi-arrow-right"></i>
-              </a>
+              </Link> */}
             </div>
             <div className="col">
               <img src={require("../../images/celebrate.svg").default} alt="" />

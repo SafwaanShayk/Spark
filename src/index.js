@@ -1,13 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./components/pages/Home";
+import App from "./App";
+import Comparison from "./components/pages/compFrame/Comparison";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      // {
+      //   path: "#features",
+      //   element: <Home />,
+      // },
+      {
+        path: "comparison",
+        element: <Comparison />,
+      },
+    ],
+  },
+]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
