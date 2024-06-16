@@ -16,7 +16,6 @@ function AdvFilters({
   handleSearchChange,
 }) {
   // const [activeFilter, setActiveFilter] = useState(""); // State to keep track of active filter
-
   // const handleTechnologyFilter = (tech) => {
   //   setActiveFilter(tech); // Update active filter state
   //   // Perform filtering based on the selected technology
@@ -30,9 +29,11 @@ function AdvFilters({
     { key: "Database", value: "Database" },
     { key: "Security", value: "Security" },
     { key: "IoT Devices", value: "IoT Devices" },
+    { key: "Cloud", value: "Cloud" },
+    { key: "Payment Gateway", value: "Payment Gateway" },
   ];
   // Render options for categories
-  const categoryOptions = categories.map((category, index) => (
+  const categoryOptions = categories?.map((category, index) => (
     <option key={index} value={category}>
       {category}
     </option>
@@ -53,8 +54,8 @@ function AdvFilters({
             value={category} // Use the category prop as value
             onChange={handleCategoryChange}
           >
-            <option value="">All</option>
-            {categoryOptions}
+            <option value={null}>All</option>
+            {categoryOptions?.slice(0, 14)}
           </select>
         </div>
 
@@ -64,7 +65,7 @@ function AdvFilters({
             value={sortBy}
             onChange={handleSortByChange}
           >
-            <option value="">All</option>
+            <option value="project_id">All</option>
             <option value="projectName">Name</option>
             <option value="cost">Cost</option>
           </select>
@@ -99,7 +100,7 @@ function AdvFilters({
 
       <div className="row">
         {techStack.map((tech) => (
-          <div className="col-2" key={tech.value}>
+          <div className="col" key={tech.value}>
             {/* Render a button/link for each unique technology */}
             <a
               href="#"

@@ -1,7 +1,15 @@
 import React from "react";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate("/login");
+  };
+  const handleRegister = () => {
+    navigate("/register");
+  };
+
   return (
     <div className="container-fluid">
       <header className="d-flex flex-wrap justify-content-center py-2 mb-1 ">
@@ -13,7 +21,7 @@ const Navbar = () => {
             <img
               src={require("../../images/SparkLogo.svg").default}
               alt=""
-              srcset=""
+              srcSet=""
               width="100px"
               style={{ position: "absolute", marginTop: "-50px" }}
             />
@@ -44,15 +52,23 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link to="/comparison">
+            <Link>
               Get Started <i className="bi bi-arrow-right"></i>
             </Link>
           </li>
         </ul>
-        <button type="button" className="btn btn-outline-primary me-2">
+        <button
+          onClick={handleLogin}
+          type="button"
+          className="btn btn-outline-primary me-2"
+        >
           Login
         </button>
-        <button type="button" className="btn  btn-outline-primary me-2">
+        <button
+          onClick={handleRegister}
+          type="button"
+          className="btn  btn-outline-primary me-2"
+        >
           Sign-up
         </button>
       </header>

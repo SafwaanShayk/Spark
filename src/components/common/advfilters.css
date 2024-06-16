@@ -1,19 +1,20 @@
 /* ADVANCE FILTERS TECH STACK */
 .container .row:nth-of-type(2) .col {
-  padding: 0px;
+  /* padding: 0px; */
   /* margin-right: -100px;  */
-  margin: 8px 30px;
+  margin: 8px 0px 8px 30px;
 }
 
-.container .row:nth-of-type(2) .col-2 .btn {
+.container .row:nth-of-type(2) .col .btn {
   background-color: white;
   font-weight: 500;
   color: black;
   border-color: #4681f4;
-  margin: 15px 15px 0px 0px;
+  /* margin: 15px 5px 10px 0px; */
+  width: max-content;
 }
 
-.container .row:nth-of-type(2) .col-2 .btn.active {
+.container .row:nth-of-type(2) .col .btn.active {
   background-color: #4681f4;
   color: black;
 }

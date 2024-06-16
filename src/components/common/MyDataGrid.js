@@ -11,7 +11,7 @@ function MyDataGrid({ selectedProjects, setSelectedProjects }) {
   const handleDelete = (projectId) => {
     // Filter out the project with the specified ID from the projects state
     const updatedProjects = projects.filter(
-      (project) => project.id !== projectId
+      (project) => project.project_Id !== projectId
     );
 
     // Update the projects state
@@ -39,7 +39,7 @@ function MyDataGrid({ selectedProjects, setSelectedProjects }) {
         <tbody>
           {projects.length > 0 ? (
             projects.map((project, index) => (
-              <tr key={project.id}>
+              <tr key={project.project_Id}>
                 <th scope="row">{index + 1}</th>
                 <td>{project.projectName || "N/A"}</td>
                 <td style={{ paddingRight: "20px" }}>
@@ -52,7 +52,7 @@ function MyDataGrid({ selectedProjects, setSelectedProjects }) {
                   <i
                     className="bi bi-trash"
                     style={{ color: "red", cursor: "pointer" }}
-                    onClick={() => handleDelete(project.id)}
+                    onClick={() => handleDelete(project.project_Id)}
                   ></i>
                 </td>
               </tr>
