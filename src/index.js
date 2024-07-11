@@ -16,6 +16,7 @@ import { AuthProvider, useAuth } from "./services/AuthContext";
 import ProtectedRoute from "./services/ProtectedRoute";
 import CustomSnackbar from "./utils/CustomSnackbar";
 import CircularProgress from "@mui/material/CircularProgress"; // Add this import for a loading indicator
+import ComparisonTable from "./components/pages/compFrame/ComparisonTable";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
               {
                 path: "comparison",
                 element: <Comparison />,
+              },
+              {
+                path: "comparison-result",
+                element: <ComparisonTable />,
               },
               {
                 path: "project-form",

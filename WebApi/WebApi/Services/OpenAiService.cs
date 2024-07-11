@@ -39,7 +39,7 @@ namespace WebApi.Services
                 prompt,
                 model: Model.ChatGPTTurboInstruct,
                 temperature: 0.1,
-                max_tokens: 1000 // Increase the max tokens to allow for a more detailed response
+                max_tokens: 500 // Increase the max tokens to allow for a more detailed response
             );
 
             var result = await api.Completions.CreateCompletionAsync(completionRequest);
@@ -49,13 +49,14 @@ namespace WebApi.Services
 
         private string GenerateComparisonPrompt(List<ProjectComparisonDto> projects)
         {
-            var prompt = new StringBuilder("Compare the following projects in detail and provide an extensive analysis. Include aspects like description, objectives, cost, features, and technology stack. Provide the analysis in a tabular format:\n\n");
+            //var prompt = new StringBuilder("Compare the following projects in detail and provide an extensive analysis. Include aspects like description, objectives, cost, features, and technology stack.Use  Provide the analysis in a tabular format:\n\n");
+            var prompt = new StringBuilder("Generate a Comparative Analysis table for three projects based on Features, Cost, and Description, using ✔️ and ❌ emojis to denote feature presence. Include Pros and Cons columns for each project. Finally, recommend the most suitable project based on the analysis. Generate a response in JSON object format.\n\n");
 
             foreach (var project in projects)
             {
                 prompt.AppendLine($"Project Name: {project.ProjectName}");
                 prompt.AppendLine($"Description: {project.Description}");
-                prompt.AppendLine($"Objectives: {project.Features}");
+                prompt.AppendLine($"Features: {project.Features}");
                 prompt.AppendLine($"Cost: {project.Cost}");
                 prompt.AppendLine($"Category: {project.Category}");
                 prompt.AppendLine($"Technology Stack: {string.Join(", ", project.TechnologyStackArray)}");

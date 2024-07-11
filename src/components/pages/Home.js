@@ -278,9 +278,9 @@ function Home() {
                     uniqueness among other projects, and compare past projects
                     with yours.
                   </p>
-                  {/* <Link to="/comparison">
-                Get Started <i className="bi bi-arrow-right"></i>
-              </Link> */}
+                  <Link to="/register">
+                    Get Started <i className="bi bi-arrow-right"></i>
+                  </Link>
                 </div>
                 <div className="col">
                   <img
@@ -293,9 +293,9 @@ function Home() {
                     our Advanced Filtering System. Classify project concepts
                     into advanced domains.
                   </p>
-                  <a href="">
+                  <Link to="/register">
                     Get Started <i className="bi bi-arrow-right"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="row align-items-start">
@@ -309,9 +309,9 @@ function Home() {
                     Keep abreast of the latest developments and trends within
                     your chosen field of expertise.
                   </p>
-                  <a href="">
+                  <Link to="/register">
                     Get Started <i className="bi bi-arrow-right"></i>
-                  </a>
+                  </Link>
                 </div>
                 <div className="col">
                   <img src={require("../../images/box.svg").default} alt="" />
@@ -320,9 +320,9 @@ function Home() {
                     Showcase your projects to potential buyers or collaborators
                     in a marketplace-like environment
                   </p>
-                  <a href="">
+                  <Link to="/register">
                     Get Started <i className="bi bi-arrow-right"></i>
-                  </a>
+                  </Link>
                 </div>
                 <div className="col">
                   <img
@@ -336,9 +336,6 @@ function Home() {
                     accessible for a diverse audience of students, educators,
                     and industry professionals
                   </p>
-                  <a href="">
-                    Get Started <i className="bi bi-arrow-right"></i>
-                  </a>
                 </div>
               </div>
             </div>

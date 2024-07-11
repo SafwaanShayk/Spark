@@ -9,7 +9,8 @@ import MyDataGrid from "../../common/MyDataGrid";
 import "./comparison.css";
 import AdvFilters from "../../common/AdvFilters";
 import axios from "axios";
-import { fetchProjects } from "../../../services/api";
+import { compareProjects, fetchProjects } from "../../../services/api";
+import { useNavigate } from "react-router-dom";
 
 function Comparison() {
   const [data, setData] = useState([]);
@@ -27,6 +28,7 @@ function Comparison() {
   const [showToast, setShowToast] = useState(false);
   const [activeFilter, setActiveFilter] = useState(""); // State to keep track of active filter
   const [error, setError] = useState({ hasError: false, message: "" });
+  const navigate = useNavigate();
 
   const totalPages = Math.ceil(data.total / postsPerPage);
   // Calculate total pages
@@ -129,6 +131,27 @@ function Comparison() {
     fetchCategories();
   }, []); // Empty dependency array to run only once on component mount
 
+  const handleCompareProjects = async () => {
+    if (selectedCards.length < 3) {
+      alert("Please select at least 3 projects to compare.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const comparisonResult = await compareProjects(selectedCards);
+      navigate("/dashboard/comparison-result", {
+        state: { comparisonResult },
+      });
+    } catch (error) {
+      console.error("Error comparing projects:", error);
+      setError({ hasError: true, message: "Error comparing projects." });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Sorting Logic: Modify the sorting logic to handle different data types and improve consistency
   // const sortedProjects = data.projects?.sort((a, b) => {
   //   if (sortBy === "id" || sortBy === "cost") {
@@ -194,7 +217,7 @@ function Comparison() {
     setCurrentPage(value);
   };
   const handleCardSelect = (project) => {
-    if (selectedCards.length >= 2 && !selectedCards.includes(project)) {
+    if (selectedCards.length >= 3 && !selectedCards.includes(project)) {
       setShowToast(true);
       return;
     }
@@ -240,7 +263,7 @@ function Comparison() {
         </section>
       </main>
 
-      <button className="animated-button">
+      <button className="animated-button" onClick={handleCompareProjects}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="arr-2"

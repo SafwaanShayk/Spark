@@ -1,16 +1,19 @@
-import { React, useRef } from "react";
+import { React } from "react";
 import "./App.css";
-import Navbar from "./components/layout/Navbar";
 import { Outlet } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./utils/Theme";
 function App() {
   // const homeRef = useRef(null);
   // const featuresRef = useRef(null);
   // const GuideRef = useRef(null);
 
   return (
-    <div className="App">
-      <Outlet />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Outlet />
+      </div>
+    </ThemeProvider>
   );
 }
 

@@ -2,6 +2,7 @@ import axios from "axios";
 
 const projectsUrl = "http://localhost:5298/api/projects";
 const userAuth = "http://localhost:5298/api/auth";
+const openAiApi = "http://localhost:5298/api/OpenAi";
 const token = localStorage.getItem("token");
 
 async function fetchProjects(
@@ -135,6 +136,21 @@ const UserAuth = {
     }),
 };
 
+async function compareProjects(selectedProjects) {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(
+    `${openAiApi}/compare-projects`,
+    selectedProjects,
+    config
+  );
+  return response.data;
+}
 export {
   fetchProjects,
   fetchProjectById,
@@ -144,5 +160,6 @@ export {
   createProject,
   updateProject,
   deleteProject,
+  compareProjects,
   UserAuth,
 };

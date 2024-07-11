@@ -193,7 +193,7 @@ export default function DashNavbar({ onToggleDrawer }) {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            S.P.A.R.K
           </Typography>
           <Search>
             <SearchIconWrapper>

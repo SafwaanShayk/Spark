@@ -122,8 +122,8 @@ export default function DashSidebar({ isOpen, toggleDrawer }) {
               icon: <LocalMallIcon />,
               path: "buy-project",
             },
-            { text: "Trash", icon: <MailIcon />, path: "trash" },
-            { text: "Spam", icon: <MailIcon />, path: "spam" },
+            // { text: "Trash", icon: <MailIcon />, path: "trash" },
+            // { text: "Spam", icon: <MailIcon />, path: "spam" },
           ].map((item, index) => (
             <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
               <ListItemButton

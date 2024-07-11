@@ -50,12 +50,6 @@ const Navbar = () => {
               Guide
             </Link>
           </li>
-
-          <li>
-            <Link>
-              Get Started <i className="bi bi-arrow-right"></i>
-            </Link>
-          </li>
         </ul>
         <button
           onClick={handleLogin}
