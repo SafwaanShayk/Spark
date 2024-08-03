@@ -47,7 +47,11 @@ function ProjectItems({
             <button className="btn btn-primary" onClick={handleBuyProject}>
               Buy
               <LocalMallIcon
-                style={{ fontSize: "1.2rem", marginBottom: "0.2rem" }}
+                style={{
+                  fontSize: "1.2rem",
+                  marginBottom: "0.2rem",
+                  marginLeft: "5px",
+                }}
               />
             </button>
 

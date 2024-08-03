@@ -139,7 +139,7 @@ function ProjectForm() {
       setError(field, {
         type: "manual",
         message: `You can select up to 3 ${
-          field === "features" ? "features" : "technology stacks"
+          field === "Features" ? "features" : "technology stacks"
         } only.`,
       });
     } else {

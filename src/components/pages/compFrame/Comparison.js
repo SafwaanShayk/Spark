@@ -11,6 +11,7 @@ import AdvFilters from "../../common/AdvFilters";
 import axios from "axios";
 import { compareProjects, fetchProjects } from "../../../services/api";
 import { useNavigate } from "react-router-dom";
+import SummarizeText from "../../common/SummarizeText";
 
 function Comparison() {
   const [data, setData] = useState([]);
@@ -72,6 +73,7 @@ function Comparison() {
   // }
   // };
 
+  console.log(selectedCards.description);
   useEffect(() => {
     const getProjects = async () => {
       try {
@@ -129,18 +131,31 @@ function Comparison() {
     };
 
     fetchCategories();
-  }, []); // Empty dependency array to run only once on component mount
+  }, []);
 
   const handleCompareProjects = async () => {
-    if (selectedCards.length < 3) {
-      alert("Please select at least 3 projects to compare.");
+    // Summarize descriptions for selected projects
+    const summarizedProjects = selectedCards.map((project) => ({
+      ...project,
+      description: SummarizeText(project.description, 250), // Adjust maxLength as needed
+    }));
+    console.log("Summarized Projects:", summarizedProjects);
+
+    if (selectedCards.length < 2) {
+      alert("Please select at least 2 or 3 projects to compare.");
       return;
     }
 
     setLoading(true);
 
     try {
-      const comparisonResult = await compareProjects(selectedCards);
+      const comparisonResult = await compareProjects(summarizedProjects);
+
+      // Save the comparison result to localStorage
+      localStorage.setItem(
+        "comparisonResult",
+        JSON.stringify(comparisonResult)
+      );
       navigate("/dashboard/comparison-result", {
         state: { comparisonResult },
       });
@@ -250,7 +265,7 @@ function Comparison() {
         <section className="text-center container">
           <div className="row">
             <h1 className="comp-h1">Comparison Framework</h1>
-            <div className="col-lg-6 col-md-8 mx-auto">
+            <div className="col-lg-8 col-md-10 mx-auto">
               <p className="lead text-body-secondary">
                 Empower your decision-making process with our Comparative
                 Analysis Framework. Evaluate and distinguish multiple project
@@ -303,21 +318,15 @@ function Comparison() {
         <Toast.Header>
           <strong className="me-auto">Danger</strong>
         </Toast.Header>
-        <Toast.Body text="white"> Choose max 2 Projects</Toast.Body>
+        <Toast.Body text="white"> You can choose max 3 Projects</Toast.Body>
       </Toast>
 
       {loading ? ( // Render spinner if loading is true
         <div
           className="d-flex justify-content-center align-items-center"
-          style={{ height: "100vh" }}
+          style={{ height: "70vh" }}
         >
-          <div
-            className="spinner-border text-success"
-            role="status"
-            style={{ width: "6rem", height: "6rem", borderWidth: "0.6rem" }}
-          >
-            <span className="visually-hidden">Loading...</span>
-          </div>
+          <div class="progress"></div>
         </div>
       ) : (
         <>

@@ -19,6 +19,8 @@ namespace WebApi.Models
         }
 
         public virtual DbSet<Project> Projects { get; set; } = null!;
+        public virtual DbSet<TechTrend> TechTrends { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,6 +34,8 @@ namespace WebApi.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
 
             // Configure ApplicationUser table
             modelBuilder.Entity<ApplicationUser>(entity =>
@@ -111,6 +115,39 @@ namespace WebApi.Models
 
                 entity.Property(e => e.UserInterface).HasMaxLength(255);
             });
+
+            // Configure TechTrend table
+            modelBuilder.Entity<TechTrend>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Year).IsRequired();
+
+                entity.Property(e => e.Technology)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Publications).IsRequired();
+
+                entity.Property(e => e.MarketSizeBillionUsd)
+                    .HasColumnType("decimal(10, 2)")
+                    .IsRequired();
+
+                entity.Property(e => e.AdoptionRate)
+                    .HasColumnType("decimal(5, 2)")
+                    .IsRequired();
+
+                entity.Property(e => e.SearchTrendIndex).IsRequired();
+
+                entity.Property(e => e.NumberOfStartups).IsRequired();
+
+                entity.Property(e => e.InvestmentBillionUsd)
+                    .HasColumnType("decimal(10, 2)")
+                    .IsRequired();
+
+                entity.Property(e => e.JobPostings).IsRequired();
+            });
+
 
             OnModelCreatingPartial(modelBuilder);
         }

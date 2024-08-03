@@ -17,11 +17,19 @@ import MailIcon from "@mui/icons-material/Mail";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 
 import { useLocation, useNavigate } from "react-router-dom";
-import { Difference, Inventory, PostAdd } from "@mui/icons-material";
+import {
+  Assessment,
+  BackupTable,
+  BackupTableOutlined,
+  Difference,
+  Inventory,
+  PostAdd,
+  TrendingUp,
+} from "@mui/icons-material";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -84,11 +92,11 @@ export default function DashSidebar({ isOpen, toggleDrawer }) {
   useEffect(() => {
     const pathToIndex = {
       comparison: 0,
-      "project-form": 1,
-      "your-project": 2,
-      "buy-project": 3,
-      trash: 4,
-      spam: 5,
+      "tech-trends": 1,
+      "comparison-result": 2,
+      "project-form": 3,
+      "your-project": 4,
+      "buy-project": 5,
     };
     const currentPath = location.pathname.split("/").pop();
     setActiveItem(pathToIndex[currentPath]);
@@ -111,9 +119,20 @@ export default function DashSidebar({ isOpen, toggleDrawer }) {
         <List>
           {[
             {
-              text: "Comparison Framework",
+              text: "Comparison",
               icon: <Difference />,
               path: "comparison",
+            },
+            {
+              
+              text: "Tech Trends",
+              icon: <TrendingUp />,
+              path: "tech-trends",
+            },
+            {
+              text: "Result",
+              icon: <BackupTableOutlined />,
+              path: "comparison-result",
             },
             { text: "Add Project", icon: <PostAdd />, path: "project-form" },
             { text: "Your Project", icon: <Inventory />, path: "your-project" },

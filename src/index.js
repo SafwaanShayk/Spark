@@ -17,6 +17,7 @@ import ProtectedRoute from "./services/ProtectedRoute";
 import CustomSnackbar from "./utils/CustomSnackbar";
 import CircularProgress from "@mui/material/CircularProgress"; // Add this import for a loading indicator
 import ComparisonTable from "./components/pages/compFrame/ComparisonTable";
+import TechTrendsChart from "./components/pages/TechTrendsChart";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
               {
                 path: "buy-project",
                 element: <BuyProject />,
+              },
+              {
+                path: "tech-trends",
+                element: <TechTrendsChart />,
               },
             ],
           },

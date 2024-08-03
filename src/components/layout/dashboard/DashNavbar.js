@@ -94,6 +94,8 @@ export default function DashNavbar({ onToggleDrawer }) {
   };
   const handleLogout = () => {
     console.log("Logging out...");
+    localStorage.removeItem("comparisonResult");
+
     logout();
     navigate("/login");
   };
@@ -103,19 +105,17 @@ export default function DashNavbar({ onToggleDrawer }) {
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
+        vertical: "bottom", // Position the menu below the icon
+        horizontal: "right", // Align the menu with the right edge of the icon
       }}
-      id={menuId}
-      keepMounted
       transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
+        vertical: "top", // The menu will pop out from the top
+        horizontal: "right", // The menu will be aligned with the right edge
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      {/* <MenuItem onClick={handleMenuClose}>Profile</MenuItem> */}
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
       {/* Add Logout Option */}
     </Menu>
@@ -206,7 +206,7 @@ export default function DashNavbar({ onToggleDrawer }) {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
@@ -223,7 +223,7 @@ export default function DashNavbar({ onToggleDrawer }) {
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               size="large"
               edge="end"

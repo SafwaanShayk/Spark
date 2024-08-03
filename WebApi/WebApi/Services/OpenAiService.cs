@@ -49,8 +49,7 @@ namespace WebApi.Services
 
         private string GenerateComparisonPrompt(List<ProjectComparisonDto> projects)
         {
-            //var prompt = new StringBuilder("Compare the following projects in detail and provide an extensive analysis. Include aspects like description, objectives, cost, features, and technology stack.Use  Provide the analysis in a tabular format:\n\n");
-            var prompt = new StringBuilder("Generate a Comparative Analysis table for three projects based on Features, Cost, and Description, using ✔️ and ❌ emojis to denote feature presence. Include Pros and Cons columns for each project. Finally, recommend the most suitable project based on the analysis. Generate a response in JSON object format.\n\n");
+            var prompt = new StringBuilder("Generate a Comparative Analysis table for these projects based on Features, Cost, and Description. Use ✔️ and ❌ emojis to denote feature presence. Include Pros and Cons columns for each project. Finally, recommend the most suitable project based on the analysis. Generate the response in markdown format:\n\n");
 
             foreach (var project in projects)
             {
@@ -63,10 +62,7 @@ namespace WebApi.Services
                 prompt.AppendLine();
             }
 
-            prompt.AppendLine("Provide your analysis below:");
-
             return prompt.ToString();
         }
-
     }
 }
